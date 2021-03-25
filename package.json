@@ -1,0 +1,24 @@
+{
+  "name": "cocktails",
+  "version": "1.0.0",
+  "description": "Cocktails finder",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Peter pettergov1@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/regenerator-runtime": "^0.13.0",
+    "parcel": "^2.0.0-beta.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.4.0",
+    "bootswatch": "^4.6.0",
+    "core-js": "^3.9.1",
+    "regenerator-runtime": "^0.13.7"
+  }
+}
