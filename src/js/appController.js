@@ -33,6 +33,33 @@ const controlCocktails = async function () {
 
     // Rendering cocktail (from cocktailView)
     cocktailView.render(model.state.cocktail);
+
+    //! /////////////////////New
+    // const title = window.document.title;
+    // const url = window.document.location.href;
+    // cocktailView.share(title, url);
+
+    const shareDate = {
+      title: window.document.title,
+      url: window.document.location.href,
+    };
+
+    console.log(shareDate);
+
+    document
+      .querySelector('.cocktail-container')
+      .addEventListener('click', async function (e) {
+        const shareBtn = e.target.closest('.share');
+        if (!shareBtn) return;
+
+        try {
+          await navigator.share(shareDate);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+    //!////////////////////////////////////
   } catch (err) {
     cocktailView.renderError();
   }

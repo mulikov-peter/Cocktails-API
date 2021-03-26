@@ -2,9 +2,11 @@ import View from './View.js';
 // import icons from './img/heart.svg'; // Parcel 1
 import favorite from 'url:../../img/favorite.png'; // Parcel 2
 import favoriteFull from 'url:../../img/favoriteFull.png'; // Parcel 2
+import share from 'url:../../img/share.png';
 
 class CocktailView extends View {
   _parentElement = document.querySelector('.cocktail-container');
+
   _errorMessage = `We could not find that cocktail. Please try another one...`;
   _message = '';
 
@@ -27,10 +29,11 @@ class CocktailView extends View {
       <h4 class="card-header cocktailName d-flex justify-content-between">${
         this._data.title
       } 
-        <span role="button" class="btn-favorite"> 
-          <img class='icon favorite pull-right' src="${
+        <span>
+          <img class='icon share mr-4' src='${share}' alt='share button'  role="button"> 
+          <img class='icon btn-favorite favorite pull-right' src="${
             this._data.favorite ? favoriteFull : favorite
-          }" alt="heart">
+          }" alt="heart" role="button">
         </span>
       </h4>
       
