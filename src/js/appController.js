@@ -6,6 +6,7 @@ import searchByLetterView from './ui-views/searchByLetterView.js';
 import searchResultsView from './ui-views/searchResultsView.js';
 import paginationView from './ui-views/paginationView.js';
 import favoriteView from './ui-views/favoriteView.js';
+import messageView from './ui-views/messageView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -47,7 +48,9 @@ const controlCocktails = async function () {
         try {
           await navigator.share(shareDate);
         } catch (error) {
-          console.log(error);
+          messageView.renderError(
+            'Probably your browser does not support this functionality'
+          );
         }
       });
   } catch (err) {
