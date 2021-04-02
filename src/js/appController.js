@@ -48,9 +48,10 @@ const controlCocktails = async function () {
         try {
           await navigator.share(shareDate);
         } catch (error) {
-          messageView.renderError(
-            'Probably your browser does not support this functionality'
-          );
+          console.log(error);
+          // messageView.renderError(
+          // 'Probably your browser does not support this functionality'
+          // );
         }
       });
   } catch (err) {

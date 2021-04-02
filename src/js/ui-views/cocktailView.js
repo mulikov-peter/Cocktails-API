@@ -30,7 +30,7 @@ class CocktailView extends View {
         this._data.title
       } 
         <span>
-          <img class='icon share mr-4' src='${share}' alt='share button'  role="button"> 
+          <img class='icon share mr-4 d-lg-none' src='${share}' alt='share button'  role="button"> 
           <img class='icon btn-favorite favorite pull-right' src="${
             this._data.favorite ? favoriteFull : favorite
           }" alt="heart" role="button">
