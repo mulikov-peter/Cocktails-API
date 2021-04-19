@@ -104,6 +104,7 @@ export const loadSearchLetterResult = async function (query) {
         img: drink.strDrinkThumb,
       };
     });
+
     state.search.page = 1;
   } catch (err) {
     throw err;

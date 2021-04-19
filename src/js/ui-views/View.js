@@ -76,9 +76,5 @@ export default class View {
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
-
-    setTimeout(() => {
-      this._clear();
-    }, 2000);
   }
 }

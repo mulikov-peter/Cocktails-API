@@ -39,6 +39,15 @@ footer {
   padding: 20px 0;
 }
 
+.dropdown-toggle::after {
+  content: '';
+  display: none;
+}
+
+.dropdown-menu {
+  min-width: 13rem;
+}
+
 @media only screen and (max-width: 576px) {
   .result-container > .card p {
     font-size: 10px;
