@@ -12,7 +12,8 @@ body {
 
 .icon,
 .icon-favorite {
-  height: 24px;
+  color: #eb5352;
+  cursor: pointer;
 }
 
 .letter {

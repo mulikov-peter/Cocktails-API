@@ -3,7 +3,7 @@ import { createAlphabet } from '../helpers.js';
 export default class View {
   _data;
 
-  //^ Clear html of parent elemnt
+  //^ Clear html of parent element
   _clear() {
     this._parentElement.innerHTML = '';
   }

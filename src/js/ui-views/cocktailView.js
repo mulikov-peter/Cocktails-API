@@ -1,8 +1,4 @@
 import View from './View.js';
-// import icons from './img/heart.svg'; // Parcel 1
-import favorite from 'url:../../img/favorite.png'; // Parcel 2
-import favoriteFull from 'url:../../img/favoriteFull.png'; // Parcel 2
-import share from 'url:../../img/share.png';
 
 class CocktailView extends View {
   _parentElement = document.querySelector('.cocktail-container');
@@ -10,13 +6,14 @@ class CocktailView extends View {
   _errorMessage = `We could not find that cocktail. Please try another one...`;
   _message = '';
 
-  addHendlerRender(handler) {
+  addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
-  addHendlerAddFavorite(handler) {
+  addHandlerAddFavorite(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn-favorite');
+
       if (!btn) return;
       handler();
     });
@@ -26,15 +23,21 @@ class CocktailView extends View {
   _generateMarkup() {
     return `
       <div class="card bg-dark m-2">
+      
       <h4 class="card-header cocktailName d-flex justify-content-between">${
         this._data.title
       } 
-        <span>
-          <img class='icon share mr-4 d-lg-none' src='${share}' alt='share button'  role="button"> 
-          <img class='icon btn-favorite favorite pull-right' src="${
-            this._data.favorite ? favoriteFull : favorite
-          }" alt="heart" role="button">
-        </span>
+      <span>
+      <i class="icon share fas fa-share-alt mr-4 d-lg-none" role="button"></i>
+          <span class='icon btn-favorite favorite pull-right'>
+          ${
+            this._data.favorite
+              ? "<i class='fas fa-heart'></i>"
+              : "<i class='far fa-heart'></i>"
+          }
+          </span>
+      </span>
+        
       </h4>
       
       <div class="card-body row">
@@ -47,7 +50,7 @@ class CocktailView extends View {
           <h5 class="list-group-item"><b>Ingredients:</b></h5>
             <ul class="list-group d-inline-block">
               ${this._data.ingredientsFull
-                .map(this._generateMarkupIngridient)
+                .map(this._generateMarkupIngredient)
                 .join('')}
             </ul>
         </div>
@@ -58,7 +61,7 @@ class CocktailView extends View {
   }
 
   //^ Generate markup for ingredients
-  _generateMarkupIngridient(ing) {
+  _generateMarkupIngredient(ing) {
     if (!ing.ingredient) return;
 
     return `

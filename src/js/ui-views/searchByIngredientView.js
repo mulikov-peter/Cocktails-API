@@ -4,8 +4,10 @@ class SearchByIngredientView {
   getQuery() {
     const query = this._parentElement
       .querySelector('.search-ingredient')
-      .value.trim();
+      .value.trim()
+      .toLowerCase();
     this._clearInput();
+    console.log(query);
     return query;
   }
 
@@ -13,7 +15,7 @@ class SearchByIngredientView {
     this._parentElement.querySelector('.search-ingredient').value = '';
   }
 
-  addHendlerSearchByIngredient(handler) {
+  addHandlerSearchByIngredient(handler) {
     this._parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
       handler();

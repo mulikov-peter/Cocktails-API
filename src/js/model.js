@@ -121,7 +121,7 @@ export const getSearchResultsPage = function (page = state.search.page) {
   return state.search.results.slice(start, end);
 };
 
-//^ Set favorites to lockal storage
+//^ Set favorites to local storage
 const persistFavorites = function () {
   localStorage.setItem('favorites', JSON.stringify(state.favorites));
 };

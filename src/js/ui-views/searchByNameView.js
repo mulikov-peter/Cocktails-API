@@ -4,8 +4,10 @@ class SearchByNameView {
   getQuery() {
     const query = this._parentElement
       .querySelector('.search-name')
-      .value.trim();
+      .value.trim()
+      .toLowerCase();
     this._clearInput();
+
     return query;
   }
 
@@ -13,7 +15,7 @@ class SearchByNameView {
     this._parentElement.querySelector('.search-name').value = '';
   }
 
-  addHendlerSearchByName(handler) {
+  addHandlerSearchByName(handler) {
     this._parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
       handler();

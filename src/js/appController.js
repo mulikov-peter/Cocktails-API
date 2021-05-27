@@ -131,7 +131,7 @@ const controlSearchLetterResults = async function () {
 };
 
 //^ Controller when click on pagination button
-const constrolPagination = function (gotoPage) {
+const controlPagination = function (gotoPage) {
   // Render new results
   searchResultsView.render(model.getSearchResultsPage(gotoPage));
 
@@ -158,14 +158,14 @@ const controlFavorites = function () {
 
 const init = function () {
   favoriteView.addHandlerRender(controlFavorites);
-  cocktailView.addHendlerRender(controlCocktails);
-  cocktailView.addHendlerAddFavorite(controlAddFavorite);
-  searchByNameView.addHendlerSearchByName(controlSearchNameResults);
-  searchByIngredientView.addHendlerSearchByIngredient(
+  cocktailView.addHandlerRender(controlCocktails);
+  cocktailView.addHandlerAddFavorite(controlAddFavorite);
+  searchByNameView.addHandlerSearchByName(controlSearchNameResults);
+  searchByIngredientView.addHandlerSearchByIngredient(
     controlSearchIngredientResults
   );
-  searchByLetterView.addHendlerSearchByLetter(controlSearchLetterResults);
-  paginationView.addHandlerClick(constrolPagination);
+  searchByLetterView.addHandlerSearchByLetter(controlSearchLetterResults);
+  paginationView.addHandlerClick(controlPagination);
 };
 
 init();
