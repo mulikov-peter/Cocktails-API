@@ -1,4 +1,3 @@
-import warning from 'url:../../img/warning.png';
 import { createAlphabet } from '../helpers.js';
 export default class View {
   _data;
@@ -71,7 +70,12 @@ export default class View {
   //^ Render error
   renderError(message = this._errorMessage) {
     const markup = `
-      <h4 class='m-2 text-center'> <span> <img class='icon warning align-top' src="${warning}" alt="warning"> ${message}</span></h4>
+      <h4 class='m-2 text-center'> 
+        <span> 
+          <i class="fas fa-exclamation icon warning"></i>
+          ${message}
+        </span>
+      </h4>
     `;
 
     this._clear();

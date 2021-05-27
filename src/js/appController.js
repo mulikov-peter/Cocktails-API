@@ -22,7 +22,7 @@ const controlCocktails = async function () {
     const id = window.location.hash.slice(1);
 
     if (!id) return;
-
+    console.log(id);
     // Render spinner
     cocktailView.renderSpinner();
 
