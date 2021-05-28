@@ -6,7 +6,6 @@ import searchByLetterView from './ui-views/searchByLetterView.js';
 import searchResultsView from './ui-views/searchResultsView.js';
 import paginationView from './ui-views/paginationView.js';
 import favoriteView from './ui-views/favoriteView.js';
-import messageView from './ui-views/messageView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -22,18 +21,9 @@ const controlCocktails = async function () {
     const id = window.location.hash.slice(1);
 
     if (!id) return;
-    console.log(id);
+
     // Render spinner
     cocktailView.renderSpinner();
-
-    // Update results view to mark selected search result
-    searchResultsView.update(model.getSearchResultsPage());
-
-    // Loading cocktail by id from model
-    await model.loadCocktail(id);
-
-    // Rendering cocktail (from cocktailView)
-    cocktailView.render(model.state.cocktail);
 
     document
       .querySelector('.cocktail-container')
@@ -48,13 +38,18 @@ const controlCocktails = async function () {
         try {
           await navigator.share(shareDate);
         } catch (error) {
-          console.log(error);
-          // messageView.renderError(
-          // 'Probably your browser does not support this functionality'
-          // );
+          alert('Probably your browser does not support this functionality');
         }
       });
+
+    // Loading cocktail by id from model
+    await model.loadCocktail(id);
+
+    // Rendering cocktail (from cocktailView)
+    cocktailView.render(model.state.cocktail);
   } catch (err) {
+    console.log(err);
+    paginationView.hidePageBtn();
     cocktailView.renderError();
   }
 };
@@ -68,9 +63,6 @@ const controlSearchNameResults = async function () {
     // Get search query
     const query = searchByNameView.getQuery();
 
-    // Load search results
-    // if (!query) return;
-
     await model.loadSearchNameResult(query);
 
     // Render results
@@ -79,19 +71,16 @@ const controlSearchNameResults = async function () {
     // Render initial pagination buttons
     paginationView.render(model.state.search);
   } catch (err) {
+    paginationView.hidePageBtn();
     searchResultsView.renderError();
   }
 };
 
 //^ Search by ingredient
-const controlSearchIngredientResults = async function () {
+const controlSearchIngredientResults = async function (query) {
   try {
     // Render spinner
     searchResultsView.renderSpinner();
-
-    // Get search query
-    const query = searchByIngredientView.getQuery();
-    if (!query) return;
 
     // Load search results
     await model.loadSearchIngredientResult(query);
@@ -126,6 +115,7 @@ const controlSearchLetterResults = async function () {
     // Render initial pagination buttons
     paginationView.render(model.state.search);
   } catch (err) {
+    paginationView.hidePageBtn();
     searchResultsView.renderError();
   }
 };

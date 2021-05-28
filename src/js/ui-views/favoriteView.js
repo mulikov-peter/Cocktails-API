@@ -10,6 +10,7 @@ class FavoriteView extends View {
   }
 
   _generateMarkup() {
+    console.log(this._data);
     return this._data.map(this._generateMarkupPreview).join('');
   }
 

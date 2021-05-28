@@ -15,7 +15,15 @@ class PaginationView extends View {
     });
   }
 
+  hidePageBtn() {
+    setTimeout(() => {
+      this._parentElement.classList.add('hide');
+    }, 3000);
+  }
+
   _generateMarkup() {
+    this._parentElement.classList.remove('hide');
+
     const curPage = this._data.page;
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage

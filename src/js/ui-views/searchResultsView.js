@@ -6,9 +6,7 @@ class SearchResultsView extends View {
   _message = '';
 
   _generateMarkup() {
-    return `
-        ${this._data.map(this._generateMarkupPreview).join('')}
-    `;
+    return `${this._data.map(this._generateMarkupPreview).join('')}`;
   }
 
   _generateMarkupPreview(result) {
@@ -17,7 +15,7 @@ class SearchResultsView extends View {
         <a class="stretched-link text-success text-decoration-none" href="#${result.id}">
           <div class="card-body p-0">
             <img class="img-fluid img-cocktail rounded-circle" src="${result.img}" alt="${result.title}"/>
-           <p class="m-0 pt-2">${result.title}</p>
+            <p class="m-0 pt-2">${result.title}</p>
           </div>
         </a>
       </div>

@@ -3,11 +3,12 @@ import { API_ID_URL } from './config.js';
 import { API_NAME_URL } from './config.js';
 import { API_INGREDIENT_URL } from './config.js';
 import { API_LETTER_URL } from './config.js';
+import { API_LIST_INGREDIENT_URL } from './config.js';
 import { RES_PER_PAGE } from './config.js';
 import { getJSON } from './helpers.js';
 import { createIngredientObject } from './helpers.js';
 
-import { createAlphabet } from './helpers.js';
+import { createAlphabet, fetchListIngredient } from './helpers.js';
 
 export const state = {
   cocktail: {},
@@ -38,7 +39,6 @@ export const loadCocktail = async function (id) {
       glass: data.drinks[0].strGlass,
       instruction: data.drinks[0].strInstructions,
       ingredientsFull,
-      //! ...(recipe.key && { key: recipe.key }), check
     };
 
     // Check if favorite is in array of favorites
@@ -154,6 +154,7 @@ const init = function () {
   if (storage) state.favorites = JSON.parse(storage);
 
   createAlphabet();
+  fetchListIngredient(API_LIST_INGREDIENT_URL);
 };
 
 init();

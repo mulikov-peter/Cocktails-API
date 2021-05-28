@@ -50,12 +50,36 @@ export const createIngredientObject = function (data) {
 //^ Create alphabet
 export const createAlphabet = function () {
   const domEl = document.querySelector('.search-letter');
-  return [...Array(26)]
-    .map((_, i) => {
-      const letter = `${String.fromCharCode(i + 65)}`;
-      const btnLetter = `<button  class="btn btn-outline-success m-2 w-10 letter" id=${letter}>${letter}</button>`;
-      domEl.insertAdjacentHTML('beforeend', btnLetter);
-      return btnLetter;
-    })
-    .join('');
+  [...Array(26)].forEach((_, i) => {
+    const letter = `${String.fromCharCode(i + 65)}`;
+    const btnLetter = `<button  class="btn btn-outline-success m-2 w-10 letter" id=${letter}>${letter}</button>`;
+    domEl.insertAdjacentHTML('beforeend', btnLetter);
+    return btnLetter;
+  });
+};
+
+// Create select for ingredients
+const createSelect = data => {
+  const domEl = document.querySelector('.select-menu');
+
+  data.drinks.forEach(el => {
+    const { strIngredient1: ingredientName } = el;
+    const select = `<div class="dropdown-item" value="${ingredientName}" role='button'>${ingredientName}</div>`;
+    domEl.insertAdjacentHTML('beforeend', select);
+  });
+};
+
+// Fetch list ingredient
+export const fetchListIngredient = async url => {
+  try {
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error('Something went wrong...');
+
+    const data = await res.json();
+
+    createSelect(data);
+  } catch (err) {
+    throw err;
+  }
 };

@@ -23,36 +23,6 @@ export default class View {
     this._parentElement.insertAdjacentHTML('afterbegin', alphabet);
   }
 
-  //^ Update
-  update(data) {
-    this._data = data;
-    const newMarkup = this._generateMarkup();
-
-    // Convert markup-string to DOM-object
-    const newDOM = document.createRange().createContextualFragment(newMarkup);
-    const newElements = Array.from(newDOM.querySelectorAll('*'));
-    const curElements = Array.from(this._parentElement.querySelectorAll('*'));
-
-    newElements.forEach((newEl, i) => {
-      const curEl = curElements[i];
-
-      if (
-        !newEl.isEqualNode(curEl) &&
-        newEl.firstChild?.nodeValue.trim() !== ''
-      ) {
-        curEl.textContent = newEl.textContent;
-      }
-
-      // Update changed attributes
-      if (!newEl.isEqualNode(curEl)) {
-        Array.from(newEl.attributes).forEach(attr => {
-          console.log(attr);
-          curEl.setAttribute(attr.name, attr.value);
-        });
-      }
-    });
-  }
-
   //^ Render spinner
   renderSpinner() {
     const markup = `
@@ -70,7 +40,7 @@ export default class View {
   //^ Render error
   renderError(message = this._errorMessage) {
     const markup = `
-      <h4 class='m-2 text-center'> 
+      <h4 class='m-2 text-center error'> 
         <span> 
           <i class="fas fa-exclamation icon warning"></i>
           ${message}
@@ -80,5 +50,11 @@ export default class View {
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
+
+    setTimeout(() => {
+      const errEl = document.querySelector('.error');
+
+      errEl.classList.add('hide');
+    }, 3000);
   }
 }
