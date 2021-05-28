@@ -129,7 +129,7 @@ const controlPagination = function (gotoPage) {
   paginationView.render(model.state.search);
 };
 
-//^ Controller when click on heart img
+//^ Controller favorites - when click on heart img
 const controlAddFavorite = function () {
   // Add/remove favorite
   if (!model.state.cocktail.favorite) model.addFavorite(model.state.cocktail);

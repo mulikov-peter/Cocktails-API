@@ -16,9 +16,7 @@ class PaginationView extends View {
   }
 
   hidePageBtn() {
-    setTimeout(() => {
-      this._parentElement.classList.add('hide');
-    }, 3000);
+    this._parentElement.classList.add('hide');
   }
 
   _generateMarkup() {

@@ -52,9 +52,9 @@ export default class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
 
     setTimeout(() => {
-      const errEl = document.querySelector('.error');
+      const el = document.querySelector('.result-container');
 
-      errEl.classList.add('hide');
+      el.classList.add('hide');
     }, 3000);
   }
 }
