@@ -38,7 +38,8 @@ const controlCocktails = async function () {
         try {
           await navigator.share(shareDate);
         } catch (error) {
-          alert('Probably your browser does not support this functionality');
+          console.log(error);
+          // alert('Probably your browser does not support this functionality');
         }
       });
 
