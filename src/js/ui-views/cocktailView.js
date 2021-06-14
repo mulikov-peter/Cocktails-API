@@ -26,8 +26,8 @@ class CocktailView extends View {
         <h4 class="card-header cocktailName d-flex justify-content-between">${
           this._data.title
         } 
-          <span>
-            <i class="icon share fas fa-share-alt mr-4 d-lg-none" role="button"></i>
+          <span class="d-flex align-items-center ml-2">
+            <i class="icon share fas fa-share-alt mr-3 d-lg-none" role="button"></i>
             <span class='icon btn-favorite favorite pull-right'>
               ${
                 this._data.favorite
